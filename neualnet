@@ -1,0 +1,17 @@
+Install.packages("neuralnet")
+library(neuralnet)
+install.packages("Metrics")
+library(Metrics)
+data("Boston", package="MASS")
+data=Boston
+data=scale(data)
+keeps=c("crim", "indus", "nox", "rm", "age", "dis", "tax", "ptratio", "lstat", "medv")
+data=data[ ,keeps]
+apply(data,2, function(x) sum(is.na(x)))
+f=medv~crim+indus+nox+rm+age+dis+tax+ptratio+lstat
+set.seed(2016)
+n=nrow(data)
+train=sample(1:n, 400, FALSE)
+fit=neuralnet(f,data=data[train,], hidden=c(10,12,20), algorithm="rprop+",
+err.fct ="sse", act.fct="logistic", threshold=0.1, linear.output=TRUE)
+plot(fit)
