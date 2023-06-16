@@ -143,3 +143,5 @@ rmse(data[-train,10], pred$net.result)
 Response=data[-train,10]
 Predicted_Value=pred$net.result
 plot(Response~Predicted_Value)
+
+1차 수정입니다.
