@@ -22,6 +22,3 @@ rmse(data[-train,10], pred$net.result)
 Response=data[-train,10]
 Predicted_Value=pred$net.result
 plot(Response~Predicted_Value)
-
-
-우와 이게 수정이 되어 있단 말인가
